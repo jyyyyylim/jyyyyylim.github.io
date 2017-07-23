@@ -1,1 +1,1 @@
-alert("this is really plain. ive warnd u lul");
+alert("end my life");
