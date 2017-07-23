@@ -1,1 +1,1 @@
-alert("under construction you just got b e a n e d");
+alert("this is really plain. ive warnd u lul");
