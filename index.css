@@ -1,4 +1,52 @@
-/*move all css from index.html to here (19/8/2017)*/
 
 
-/*STYLESHEET*/
+/*STYLESHEET 24/8/2017*/
+<style>
+    html {
+        background-color: #000000;
+    }
+    </style>
+<style type="text/css" media="screen, print">
+    @font-face {
+        font-family: "lt";
+        src: url(src/Lato-Light.ttf);
+    }
+    body {
+        font-family: "lato", lt
+    }
+        </style>
+            <style>
+            ul {
+                list-style-type: none;
+                margin: 0;
+                padding: 0;
+                overflow: hidden;
+                background-color: #333;
+            }
+            li {
+                float: left;
+            }
+            li a {
+                display: block;
+                color: white;
+                text-align: center;
+                padding: 14px 16px;
+                text-decoration: none;
+            }
+            li a:hover:not(.active) {
+                background-color: #111;
+            }
+            .active {
+                background-color: #4CAF50;
+            }
+        </style>
+    <body>
+        <ul>
+            <li><a class="active" href="/">Home</a></li>
+            <li><a href="/poetry/">Poetry</a></li>
+            <li><a href="/contact/">Contact</a></li>
+            <li><a href="/discord/">Discord</a></li>
+            <li><a href="/downloads/">Downloads</a></li>
+            <li><a href="/about/">About</a></li>
+        </ul>
+    </body>
