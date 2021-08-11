@@ -35,7 +35,7 @@ html{
     position: relative;
     margin-left: 6%;
     top: 50%;
-    bottom: 50%;
+    transform: translate(0%, -50%);
 }
 
 .y-center-r{
@@ -44,7 +44,7 @@ html{
     text-align: right;
     margin-right: 6%;
     top: 50%;
-    bottom: 50%;
+    transform: translate(0%, -50%);
 }
 
 
