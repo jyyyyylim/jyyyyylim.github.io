@@ -34,7 +34,7 @@ html{
     /*relative, to the container element.*/
     position: relative;
     margin-left: 6%;
-    top: 50%;
+    top: 45%;
     transform: translate(0%, -50%);
 }
 
@@ -43,7 +43,7 @@ html{
     position: relative;
     text-align: right;
     margin-right: 6%;
-    top: 50%;
+    top: 45%;
     transform: translate(0%, -50%);
 }
 
