@@ -1,3 +1,4 @@
 ### jyyyyylim.github.io
-terrible site dont visit pls
+frameworkless and scriptless page, ez
+
 
