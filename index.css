@@ -1,53 +1,104 @@
+@font-face{
+    font-family:titilliumweb;
+    src: url(src/titilliumweb-regular.ttf);
+}
+
+html{
+    font-size:30px;
+    margin: auto;
+    font-family:'titilliumweb';
+    color:antiquewhite;
+    background-color:rgb(40, 44, 52);
+    scroll-snap-type: y mandatory;
+}
+
+.pagediv-item{
+    position:relative;
+    width:98vw;
+    height:98vh;
+    margin: auto;
+    border: solid 2px red;
+    scroll-snap-align: start;
+}
+
+/*.pagediv-item+.pagediv-item{
+        margin-top: 4%;
+        margin-bottom: 2%;
+}*/
+
+.y-center{
+    /*relative, to the container element.*/
+    position: relative;
+    margin-left: 6%;
+    top: 50%;
+    bottom: 50%;
+}
+
+.y-center-r{
+    /*relative, to the container element.*/
+    position: relative;
+    text-align: right;
+    margin-right: 6%;
+    top: 50%;
+    bottom: 50%;
+}
 
 
-/*STYLESHEET 24/8/2017*/
-/*kill me, i cant external stylesheet this shit*/
-<style>
-    html {
-        background-color: #000000;
-    }
-    </style>
-<style type="text/css" media="screen, print">
-    @font-face {
-        font-family: "lt";
-        src: url(src/Lato-Light.ttf);
-    }
-    body {
-        font-family: "lato", lt
-    }
-        </style>
-            <style>
-            ul {
-                list-style-type: none;
-                margin: 0;
-                padding: 0;
-                overflow: hidden;
-                background-color: #333;
-            }
-            li {
-                float: left;
-            }
-            li a {
-                display: block;
-                color: white;
-                text-align: center;
-                padding: 14px 16px;
-                text-decoration: none;
-            }
-            li a:hover:not(.active) {
-                background-color: #111;
-            }
-            .active {
-                background-color: #4CAF50;
-            }
-        </style>
-    <body>
-        <ul>
-            <li><a class="active" href="/">Home</a></li>
-            <li><a href="/poetry/">Poetry</a></li>
-            <li><a href="/contact/">Contact</a></li>
-            <li><a href="/discord/">Discord</a></li>
-            <li><a href="/downloads/">Downloads</a></li>
-            <li><a href="/about/">About</a></li>
-        </ul>
-    </body>
+
+/*===================================================================*/
+
+/*
+
+-header: 60px
+-textctnt/subheader: inherited (20px from root)
+-subtext: 0.8rem?
+
+>must standardise as finishing touch
+
+*/
+
+
+.header-funny{
+    font-size:60px;
+    animation-duration: 0.04s;
+    animation-iteration-count: infinite;
+}
+
+.header{
+    font-size:50px;
+}
+
+.header-funny:hover{
+    animation-name:hahafunny;
+}
+
+@keyframes hahafunny{
+    0% {font-size:60px;}
+    50% {font-size:80px;}
+    100% {font-size:60px;}
+}
+
+.subscript{
+    font-size: .3rem;
+}
+
+.textctnt{
+    font-size: .6rem;
+}
+
+
+.reactive-textctnt{
+    transition: 0.6s;
+}
+
+
+
+.reactive-textctnt-subtext{
+    transition: 0.6s;
+}
+
+
+[class*="reactive-"]:hover{
+    font-size:1.1rem;
+    text-shadow:0px 0px 5px rgb(237,237,237);    
+}
