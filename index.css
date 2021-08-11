@@ -17,7 +17,7 @@ html{
     width:98vw;
     height:98vh;
     margin: auto;
-    scroll-snap-align: start;
+    scroll-snap-align: center;
 }
 
 /*.pagediv-item+.pagediv-item{
