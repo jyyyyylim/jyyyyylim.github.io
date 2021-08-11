@@ -18,6 +18,7 @@
     background-color:rgb(40, 42, 54);
     scroll-snap-type: y mandatory;
     scroll-snap-points-y: repeat(100vh);
+    scroll-snap-stop: always;
     overflow-y: scroll;
     -webkit-text-decoration-color: rgba(255, 255, 255, 0.4);
 }
