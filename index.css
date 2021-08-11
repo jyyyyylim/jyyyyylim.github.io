@@ -17,7 +17,6 @@ html{
     width:98vw;
     height:98vh;
     margin: auto;
-    border: solid 2px red;
     scroll-snap-align: start;
 }
 
