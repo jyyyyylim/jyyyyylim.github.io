@@ -15,7 +15,7 @@ html{
 .pagediv-item{
     position:relative;
     width:98vw;
-    height:98vh;
+    height:100vh;
     margin: auto;
     scroll-snap-align: center;
 }
@@ -87,13 +87,13 @@ html{
 
 
 .reactive-textctnt{
-    transition: 0.6s;
+    transition: 0.5s;
 }
 
 
 
 .reactive-textctnt-subtext{
-    transition: 0.6s;
+    transition: 0.5s;
 }
 
 
