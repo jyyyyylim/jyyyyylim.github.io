@@ -1,10 +1,10 @@
 @font-face{
     font-family:'Titillium Web', sans-serif; 
-    src: url('TitilliumWeb-Regular.eot');
-    src: url('TitilliumWeb-Regular.eot?#iefix') format('embedded-opentype'),
-        url('TitilliumWeb-Regular.woff') format('woff'),
-        url('TitilliumWeb-Regular.svg#TitilliumWeb-Regular') format('svg'), 
-        url(./src/TitilliumWeb-Regular.ttf) format("truetype");
+    src: url(./src/TitilliumWeb-Regular.eot);
+    src: url(./src/TitilliumWeb-Regular.eot?#iefix) format('embedded-opentype'),
+        url(./src/TitilliumWeb-Regular.woff) format('woff'),
+        url(./src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
+        url(./src/TitilliumWeb-Regular.ttf) format('truetype');
     font-display: swap;
 }
 
