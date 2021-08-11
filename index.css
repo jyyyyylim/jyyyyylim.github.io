@@ -1,6 +1,6 @@
 @font-face{
     font-family:'Titillium Web', sans-serif;
-    src: url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
+    src: url(./src/TitilliumWeb-Regular.ttf);
 }
 
 html{
