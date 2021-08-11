@@ -1,6 +1,11 @@
 @font-face{
-    font-family:'Titillium Web', sans-serif;
-    src: url(./src/TitilliumWeb-Regular.ttf);
+    font-family:'Titillium Web', sans-serif; 
+    src: url('TitilliumWeb-Regular.eot');
+    src: url('TitilliumWeb-Regular.eot?#iefix') format('embedded-opentype'),
+        url('TitilliumWeb-Regular.woff') format('woff'),
+        url('TitilliumWeb-Regular.svg#TitilliumWeb-Regular') format('svg'), 
+        url(./src/TitilliumWeb-Regular.ttf) format("truetype");
+    font-display: swap;
 }
 
 html{
