@@ -1,12 +1,12 @@
 @font-face{
-    font-family:titilliumweb;
-    src: url(../jyyyyylim.github.io/src/TitilliumWeb-Regular.ttf);
+    font-family:'Titillium Web', sans-serif;
+    src:  url('https://fonts.googleapis.com/css2?family=Titillium+Web&display=swap');
 }
 
 html{
     font-size:30px;
     margin: auto;
-    font-family:'titilliumweb';
+    font-family:'Titillium Web';
     color:antiquewhite;
     background-color:rgb(40, 44, 52);
     scroll-snap-type: y mandatory;
