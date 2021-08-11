@@ -1,10 +1,10 @@
 @font-face{
     font-family:'Titillium Web', sans-serif; 
-    src: url(./src/TitilliumWeb-Regular.eot);
-    src: url(./src/TitilliumWeb-Regular.eot?#iefix) format('embedded-opentype'),
-        url(./src/TitilliumWeb-Regular.woff) format('woff'),
-        url(./src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
-        url(./src/TitilliumWeb-Regular.ttf) format('truetype');
+    src: url('TitilliumWeb-Regular.eot');
+    src: url('TitilliumWeb-Regular.eot?#iefix') format('embedded-opentype'),
+        url('TitilliumWeb-Regular.woff') format('woff'),
+        url('TitilliumWeb-Regular.svg#TitilliumWeb-Regular') format('svg'), 
+        url(./src/TitilliumWeb-Regular.ttf) format("truetype");
     font-display: swap;
 }
 
@@ -18,7 +18,6 @@
     background-color:rgb(40, 42, 54);
     scroll-snap-type: y mandatory;
     scroll-snap-points-y: repeat(100vh);
-    scroll-snap-stop: always;
     overflow-y: scroll;
     -webkit-text-decoration-color: rgba(255, 255, 255, 0.4);
 }
@@ -55,15 +54,14 @@ body::-webkit-scrollbar-thumb{background:rgb(62, 66, 73);}
 }
 
 .y-center{margin-left: var(--x-dir-margin);margin-right: var(--x-dir-margin);}
-.y-center-r{position: relative;text-align: right;margin-left: var(--x-dir-margin); margin-right: var(--x-dir-margin);}
+.y-center-r{position: relative;text-align: right;float:right;margin-left: var(--x-dir-margin); margin-right: var(--x-dir-margin);}
 
 [class*="y-center"]{
     position: relative;
     top: 45%;
-    transform: translate(0%, -48%);
+    transform: translate(0%, -45%);
     --x-dir-margin: 6%;
 }
-
 
 
 /*===================================================================*/
@@ -102,7 +100,7 @@ first keyframe experiment: giving seizures for the funny
 }
 
 .subscript{font-size: .3rem;}
-.textctnt{font-size: .7rem;}
+.textctnt{font-size: 1rem;}
 .reactive-textctnt{transition: 0.5s;}
 .reactive-textctnt-subtext{transition: 0.5s;}
 
