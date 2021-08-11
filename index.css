@@ -54,8 +54,8 @@ body::-webkit-scrollbar-thumb{background:rgb(62, 66, 73);}
     scroll-snap-align: center;
 }
 
-.y-center{margin-left: var(--x-dir-margin);}
-.y-center-r{position: relative;text-align: right;margin-right: var(--x-dir-margin);}
+.y-center{margin-left: var(--x-dir-margin);margin-right: var(--x-dir-margin);}
+.y-center-r{position: relative;text-align: right;margin-left: var(--x-dir-margin); margin-right: var(--x-dir-margin);}
 
 [class*="y-center"]{
     position: relative;
