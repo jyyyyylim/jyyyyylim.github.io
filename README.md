@@ -1,4 +1,4 @@
 ### jyyyyylim.github.io
-frameworkless and scriptless page, ez
+frameworkless and bloatless page, ez
 
 
