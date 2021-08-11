@@ -59,7 +59,7 @@ body::-webkit-scrollbar-thumb{background:rgb(62, 66, 73);}
 [class*="y-center"]{
     position: relative;
     top: 45%;
-    transform: translate(0%, -45%);
+    transform: translate(0%, -48%);
     --x-dir-margin: 6%;
 }
 
