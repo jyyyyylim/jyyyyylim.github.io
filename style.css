@@ -2,6 +2,7 @@
     font-family:'Titillium Web', sans-serif; 
     src: url(./src/TitilliumWeb-Regular.eot);
     src: url(./src/TitilliumWeb-Regular.eot?#iefix) format('embedded-opentype'),
+        url(./src/TitilliumWeb-Regular.woff2) format('woff2'),
         url(./src/TitilliumWeb-Regular.woff) format('woff'),
         url(./src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
         url(./src/TitilliumWeb-Regular.ttf) format("truetype");
@@ -10,51 +11,55 @@
 
 :root{
     /*master font size defined as 25px, REM makes adjustments carefree*/
-    font-size:25px;
+    font-size: 25px;
     margin: auto;
-    font-family:'Titillium Web';
-    --pagecolor:antiquewhite;
-    color: var(--pagecolor);
-    background-color:rgb(40, 42, 54);
+    font-family: 'Titillium Web';
+    color: antiquewhite;
+    background-color: rgb(40, 44, 52);
     scroll-snap-type: y mandatory;
+    -ms-scroll-snap-type: y mandatory;
     scroll-snap-points-y: repeat(100vh);
     overflow-y: scroll;
     -webkit-text-decoration-color: rgba(255, 255, 255, 0.4);
 }
 
 :link{
-    color:var(--pagecolor);
-    animation-name: link;
-    animation-duration:4s;
+    color: var(--pagecolor);
+    animation-name: glow;
+    animation-duration: 3s;
     animation-iteration-count: infinite;
 }
 :visited{
-    color:var(--pagecolor);
-    animation-name: link;
-    animation-duration:4s;
+    color: var(--pagecolor);
+    animation-name: glow;
+    animation-duration: 3s;
     animation-iteration-count: infinite;
 }
 
-@keyframes link{
-    0%{text-shadow:0px 0px 10px rgb(255,255,255)}
-    50%{text-shadow:0px 0px 2px rgb(255,255,255)}
-    100%{text-shadow:0px 0px 10px rgb(255,255,255)}    
+@keyframes glow{
+    0%{text-shadow: 0px 0px 12px rgb(255,255,255)}
+    50%{text-shadow: 0px 0px 2px rgb(255,255,255)}
+    100%{text-shadow: 0px 0px 12px rgb(255,255,255)}    
 }
 
 body::-webkit-scrollbar{width: 0.25rem;}
-body::-webkit-scrollbar-track{background:rgb(46, 50, 58);}
-body::-webkit-scrollbar-thumb{background:rgb(62, 66, 73);}
+body::-webkit-scrollbar-track{background: rgb(46, 50, 58);}
+body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
 
 .pagediv-item{
-    position:relative;
-    width:98vw;
-    height:100vh;
-    margin: auto;
-    scroll-snap-align: center;
+    position: relative;
+    width: 98vw;
+    height: 100vh;
+    margin-top: 5rem;
+    scroll-snap-align: start;
 }
 
-.y-center{margin-left: var(--x-dir-margin);margin-right: var(--x-dir-margin);}
-.y-center-r{position: relative;text-align: right;float:right;margin-left: var(--x-dir-margin); margin-right: var(--x-dir-margin);}
+
+/*=============================ANIMATIONS===========================*/
+
+
+.y-center{margin-left: var(--x-dir-margin);}
+.y-center-r{text-align: right; float: right; margin-right: var(--x-dir-margin);}
 
 [class*="y-center"]{
     position: relative;
@@ -64,19 +69,21 @@ body::-webkit-scrollbar-thumb{background:rgb(62, 66, 73);}
 }
 
 
-/*===================================================================*/
-
-
 .header-funny{
-    font-size:2.3rem;
+    font-size: 2.3rem;
     animation-duration: 0.04s;
     animation-iteration-count: infinite;
 }
 
 .header{
-    font-size:1.6rem;
+    font-size: 1.6rem;
     animation-duration: 1s;
     animation-iteration-count: infinite;
+}
+
+.header2{
+    font-size: 1.2rem;
+    text-decoration: underline;
 }
 
 .header-funny:hover{animation-name:hahafunny;}
@@ -87,25 +94,80 @@ first keyframe experiment: giving seizures for the funny
 */
 
 @keyframes hahafunny{
-    0% {font-size:2.3rem;}
-    50% {font-size:3rem;}
-    100% {font-size:2.3rem;}
+    0% {font-size: 2.3rem;}
+    50% {font-size: 3rem;}
+    100% {font-size: 2.3rem;}
 }
 
 @keyframes underlined{
     0% {text-decoration: none; text-decoration-color: rgba(255, 255, 255, 0.2);}
     50% {text-decoration: underline;}
-    100% {text-decoration: none; text-decoration-color: rgba(255, 255, 255, 0.2);}
-    
+    100% {text-decoration: none; text-decoration-color: rgba(255, 255, 255, 0.2);}   
 }
 
 .subscript{font-size: .3rem;}
 .textctnt{font-size: 1rem;}
 .reactive-textctnt{transition: 0.5s;}
 .reactive-textctnt-subtext{transition: 0.5s;}
+.emphasis{
+    animation-name: glow;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
+}
 
 
 [class*="reactive-"]:hover{
-    font-size:1.1rem;
-    text-shadow:0px 0px 5px rgb(237,237,237);    
+    font-size: 1.1rem;
+    text-shadow: 0px 0px 5px rgb(237,237,237);    
+}
+
+
+/*===================================================================*/
+
+
+/*
+
+implement: projects
+sects: complete/incomplete
+faded, clarify when moused over
+#reactives
+
+possible animated autoscroll
+
+*/
+
+.contctr{
+    display: block;
+    margin-left: auto;
+    margin-right: auto;
+    width: 70%
+}
+
+.ctntcard{
+    margin: 2%;    
+    display: inline-block;
+    background-color: rgb(46, 50, 58);
+    transition: 1s;
+    opacity: 15%;
+    box-shadow: 0 0px 0px 2 rgba(255, 255, 255, 0.2);
+    border-radius: 14px;
+    width: 40%;
+    height: 50%;
+}
+
+.ctnt-container{
+    margin: 0.7rem;
+    min-height: 50%;
+}
+
+.ctntcard:hover{
+    opacity: 100%;
+    transform: matrix(1.05, 0.02, -0.03, 1.05, 0, 20);
+    /*transform: matrix3d(1.3, 0, 1, 0, 
+                    1, 0, 1, 0
+                    1, 0, 1, 0, 
+                    1, 0, 1, 0);
+*/
+    box-shadow: 0 0px 0px 10 rgba(255, 255, 255, 20);
+
 }
