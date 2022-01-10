@@ -6,7 +6,7 @@
         url(src/TitilliumWeb-Regular.woff) format('woff'),
         url(src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
         url(src/TitilliumWeb-Regular.ttf) format("truetype");
-    font-display: swap;
+
 }
 
 :root{
