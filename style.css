@@ -1,12 +1,10 @@
 @font-face{
-    font-family:'Titillium Web', sans-serif; 
-
-    src: url(src/TitilliumWeb-Regular.eot?#iefix) format('embedded-opentype'),
-        url(src/TitilliumWeb-Regular.woff2) format('woff2'),
-        url(src/TitilliumWeb-Regular.woff) format('woff'),
-        url(src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
-        url(src/TitilliumWeb-Regular.ttf) format("truetype");
-
+    src: url(./src/TitilliumWeb-Regular.eot?#iefix) format('embedded-opentype'),
+        url(./src/TitilliumWeb-Regular.woff2) format('woff2'),
+        url(./src/TitilliumWeb-Regular.woff) format('woff'),
+        url(./src/TitilliumWeb-Regular.svg#TitilliumWeb-Regular) format('svg'), 
+        url(./src/TitilliumWeb-Regular.ttf) format("truetype");
+    font-display: swap;
 }
 
 :root{
@@ -16,12 +14,13 @@
     font-family: 'Titillium Web', sans-serif;
     color: white;
     background-color: rgb(11, 13, 15);
+    --background-col2: rgba(11, 13, 55, 0.15);
     scroll-snap-type: y mandatory;
     -ms-scroll-snap-type: y mandatory;
-    scroll-snap-points-y: repeat(100vh);
     overflow-y: scroll;
     -webkit-text-decoration-color: rgba(255, 255, 255, 0.4);
 }
+
 
 
 body::-webkit-scrollbar{width: 0.25rem;}
@@ -30,10 +29,16 @@ body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
 
 .pagediv-item{
     position: relative;
-    width: 98vw;
-    height: 100vh;
-    scroll-snap-align: start;
+    width: 100%; max-width: 100%;
+    height: 75vh;
+    scroll-snap-align: center;
 }
+
+.pagediv-item:first-child {height: 100vh;}
+.pagediv-item:last-child {height: 100vh;}
+
+.pagediv-item:not(:last-child) {border-bottom: 5px solid rgba(46, 50, 58, 0.2);}
+.pagediv-item:nth-child(even) {background-color: var(--background-col2);}
 
 
 /*=============================ANIMATIONS===========================*/
@@ -145,15 +150,18 @@ possible animated autoscroll
 }
 
 .ctntcard{
-    margin: 2%;    
+    margin: 0.7rem;
+    padding: 0.5rem;
     width: 40%;
-    height: 50%;
     opacity: 10%;
-    border-radius: 14px;
-    box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 0.2);
-    background-color: rgb(23, 23, 23);
+    border-radius: 1%;
+    box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 0.1);
+    background-color: rgba(21, 23, 25, 0.15);
     display: inline-block;
     transition: 1s;
+}
+
+.ctntcard:hover {
     animation-name: cardEmphasis;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
@@ -168,17 +176,18 @@ possible animated autoscroll
 
 .ctntcard:hover{
     opacity: 100%;
-    transform: matrix(1.05, 0.02, -0.03, 1.05, 0, 20);
+    transform: matrix(1.05, 0.01, -0.015, 1.05, 0, 5);
     box-shadow: 0 0px 0px 10 rgba(255, 255, 255, 20);
     animation-name: none;
 }
 
 .ctnt-container{
-    margin: 0.7rem;
+    display: flex;
+    flex-direction: row;
 }
 
 
-/*===================================================================*/
+/*==============================mtrx=================================*/
 
 
 .panel{
@@ -200,6 +209,7 @@ possible animated autoscroll
 }
 
 .preview-div{
+    margin: auto;
     opacity: 70%;
     padding: 1rem;
     width: 30%;
@@ -240,5 +250,5 @@ possible animated autoscroll
 }
 
 kbd {
-    font-size: 0.6rem;
+    font-size: 0.62rem;
 }
