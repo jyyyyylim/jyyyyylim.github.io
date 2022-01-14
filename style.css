@@ -9,12 +9,13 @@
 
 :root{
     /*master font size defined as 25px, REM makes adjustments carefree*/
-    font-size: 140%;
-    margin: auto;
+    font-size: 150%;
+    margin-left: 5rem;
+    margin-right: 5rem;
     font-family: 'Titillium Web', sans-serif;
     color: white;
     background-color: rgb(11, 13, 15);
-    --background-col2: rgba(11, 13, 55, 0.15);
+    --background-col2: rgba(11, 23, 45, 0.15);
     scroll-snap-type: y mandatory;
     -ms-scroll-snap-type: y mandatory;
     overflow-y: scroll;
@@ -37,23 +38,23 @@ body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
 .pagediv-item:first-child {height: 100vh;}
 .pagediv-item:last-child {height: 100vh;}
 
-.pagediv-item:not(:last-child) {border-bottom: 5px solid rgba(46, 50, 58, 0.2);}
+.pagediv-item:not(:last-child) {border-bottom: 5px solid rgba(46, 50, 58, 0.15);}
 .pagediv-item:nth-child(even) {background-color: var(--background-col2);}
 
 
 /*=============================ANIMATIONS===========================*/
 
 
-.y-center{margin-left: var(--x-dir-margin);}
-.y-center-r{text-align: right; float: right; margin-right: var(--x-dir-margin);}
-
 [class*="y-center"]{
     position: relative;
     top: 45%;
+    max-height: 100%;
     transform: translate(0%, -45%);
     --x-dir-margin: 6%;
 }
 
+.y-center{margin-left: var(--x-dir-margin);}
+.y-center-r{text-align: right; margin-right: var(--x-dir-margin);}
 
 .header-funny{
     font-size: 2.3rem;
@@ -62,7 +63,9 @@ body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
 }
 
 .header{
+    margin-bottom: 1rem;
     font-size: 1.6rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.3);
     animation-duration: 1s;
     animation-iteration-count: infinite;
 }
@@ -73,7 +76,6 @@ body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
 }
 
 .header-funny:hover{animation-name:hahafunny;}
-.header:hover{animation-name:underlined;}
 
 :link{
     color: var(--pagecolor);
@@ -99,12 +101,6 @@ first keyframe experiment: giving seizures for the funny
     100% {font-size: 2.3rem;}
 }
 
-@keyframes underlined{
-    0% {text-decoration: none; text-decoration-color: rgba(255, 255, 255, 0.2);}
-    50% {text-decoration: underline;}
-    100% {text-decoration: none; text-decoration-color: rgba(255, 255, 255, 0.2);}   
-}
-
 @keyframes glow{
     0%{text-shadow: 0px 0px 12px rgb(255,255,255)}
     50%{text-shadow: 0px 0px 2px rgb(255,255,255)}
@@ -112,18 +108,17 @@ first keyframe experiment: giving seizures for the funny
 }
 
 .subscript{font-size: .3rem;}
-.textctnt{font-size: 1rem;}
-.reactive-textctnt{transition: 0.5s;}
-.reactive-textctnt-subtext{transition: 0.5s;}
+.textctnt{font-size: 1rem; margin-top: 1%;}
+.reactive{transition: 0.5s;}
+
 .emphasis{
     animation-name: glow;
     animation-duration: 3s;
     animation-iteration-count: infinite;
 }
 
-
-[class*="reactive-"]:hover{
-    font-size: 1.1rem;
+.reactive:hover{
+    font-size: 1.05rem;
     text-shadow: 0px 0px 5px rgb(237,237,237);    
 }
 
@@ -143,43 +138,39 @@ possible animated autoscroll
 */
 
 .contctr{
-    display: block;
+    display: flex;
     margin-left: auto;
     margin-right: auto;
-    width: 70%
 }
 
 .ctntcard{
     margin: 0.7rem;
-    padding: 0.5rem;
+    padding: 2rem;
     width: 40%;
     opacity: 10%;
     border-radius: 1%;
-    box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 0.1);
+    box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 0);
     background-color: rgba(21, 23, 25, 0.15);
-    display: inline-block;
+    flex: 1;
     transition: 1s;
 }
 
 .ctntcard:hover {
+    opacity: 100%;
+    transform: matrix(1.05, 0.01, -0.015, 1.05, 2, 10);
+    box-shadow: 0 0px 0px 10 rgba(255, 255, 255, 20);
     animation-name: cardEmphasis;
     animation-duration: 1.4s;
     animation-iteration-count: infinite;
 }
 
 @keyframes cardEmphasis{
-    0%{box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 0.4);}
-    50%{box-shadow: 0 0 10pt 2pt rgba(255, 255, 255, 0.4);}
-    70%{box-shadow: 0 0 17pt 2pt rgba(255, 255, 255, 0.4);}
-    100%{box-shadow: 0 0 2pt 2pt rgba(255, 255, 255, 0.4);}
+    0%{box-shadow: 0 0 2pt 2pt rgba(255, 255, 255, 0.4);}
+    50%{box-shadow: 0 0 8pt 2pt rgba(255, 255, 255, 0.4);}
+    70%{box-shadow: 0 0 15pt 2pt rgba(255, 255, 255, 0.4);}
+    100%{box-shadow: 0 0 1pt 2pt rgba(255, 255, 255, 0.4);}
 }
 
-.ctntcard:hover{
-    opacity: 100%;
-    transform: matrix(1.05, 0.01, -0.015, 1.05, 0, 5);
-    box-shadow: 0 0px 0px 10 rgba(255, 255, 255, 20);
-    animation-name: none;
-}
 
 .ctnt-container{
     display: flex;
