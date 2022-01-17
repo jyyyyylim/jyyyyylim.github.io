@@ -14,7 +14,7 @@ function initializeCanvas(){
 
     //setInterval(spawnRoutine(), 7);
 
-    setInterval(function() {if (Math.random() <= 0.8) {particleArray.push({x:randrange(0,window.innerWidth),y:window.innerHeight,bias:randrange(-1,1),size:randrange(2,8),power:randrange(3,10)});}},20);
+    setInterval(function() {if (Math.random() <= 0.8 && particleArray.length > 100) {particleArray.push({x:randrange(0,window.innerWidth),y:window.innerHeight,bias:randrange(-1,1),size:randrange(2,8),power:randrange(3,10)});}},20);
 
 
     window.requestAnimationFrame(advanceFrame);
