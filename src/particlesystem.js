@@ -1,6 +1,5 @@
 "use strict";
 
-
 //initialize vars for canvas drawing
 var canvasContext = null;
 var canvasElement = null;
@@ -30,6 +29,7 @@ function initializeCanvas(){
     window.requestAnimationFrame(advanceFrame);
 }
 
+
 //recursive main loop for frame compositing
 
 //targeted effect: vague resemblance to the "rising ashes of a fire"
@@ -54,10 +54,12 @@ function advanceFrame(){
     //iterate through every single thing
     for(var i=0; i < particleArray.length; i++){
 
+
         //"weighing" the bias function because even a random float between 1 and -1 is too much
         particleArray[i].x += particleArray[i].bias/6;
         //manipulating "float" speed
         //particleArray[i].y += particleArray[i].size*-0.7;
+
 
         //>"ash particle" draw routine
         canvasContext.beginPath();
@@ -76,18 +78,18 @@ function advanceFrame(){
         if (nodeDistancetoMouse(particleArray[i].x, particleArray[i].y) > nodeActivationDistance) {
             if (Math.random() <= 0.1) {particleArray[i].bias -= randrange(-1,1);}
             particleArray[i].y += particleArray[i].size*-0.8;
+
         } else {
             particleArray[i].bias -= biasRelativetoCursor(particleArray[i].x, particleArray[i].y)/800;
-            if (Cursor.ypos > particleArray[i].y){
-                particleArray[i].y += particleArray[i].size*-0.9;
-            } else {
-                particleArray[i].y += particleArray[i].size*-0.7;}
+
+            if (Cursor.ypos > particleArray[i].y){particleArray[i].y += particleArray[i].size*-0.9;} 
+            else {particleArray[i].y += particleArray[i].size*-0.4;}
 
             canvasContext.strokeStyle = "rgba(255, 255, 255," + opacityScale(particleArray[i].size) + ")";
             //start draw routine for "node paths"
             canvasContext.beginPath();
-            canvasContext.moveTo(Cursor.xpos-offsetX, Cursor.ypos+offsetY);
-            canvasContext.lineTo(particleArray[i].x, particleArray[i].y);
+            canvasContext.moveTo(Cursor.xpos - offsetX, Cursor.ypos + offsetY);
+            canvasContext.lineTo(particleArray[i].x + (particleArray[i].size / 2), particleArray[i].y + (particleArray[i].size));
             canvasContext.stroke();
         }
     }
@@ -95,7 +97,7 @@ function advanceFrame(){
     canvasContext.strokeStyle = "white";
     //>draw routine for cursor
     canvasContext.beginPath();
-    canvasContext.arc(Cursor.xpos-offsetX, Cursor.ypos+offsetY, cursorRadius, 0, 2*Math.PI);
+    canvasContext.arc(Cursor.xpos - offsetX, Cursor.ypos + offsetY, cursorRadius, 0, 2*Math.PI);
     canvasContext.stroke();
 
     //frame is finally advanced when all DRAW procedures go through
