@@ -1,9 +1,22 @@
 "use strict";
 
+
+//initialize vars for canvas drawing
 var canvasContext = null;
 var canvasElement = null;
 var particleArray = [];
+var Cursor = [];
 
+//misc vars for objects
+const cursorRadius = 10;
+const offsetX = Math.sqrt(cursorRadius);
+const offsetY = Math.sqrt(cursorRadius);
+const nodeActivationDistance= 300;
+
+
+//equations for the simulation
+function opacityScale(s) {return 0.7-(1/s)}
+function nodeDistancetoMouse(x, y) {return Math.abs(Math.sqrt(((x-Cursor.xpos)**2)+((y-Cursor.ypos)**2)))}
 function randrange(m, n){return Math.random()*(n - m) + m;}
 
 
@@ -11,18 +24,21 @@ function initializeCanvas(){
     canvasElement = document.getElementById("simulation")
     canvasContext = canvasElement.getContext("2d");
 
-
-    //setInterval(spawnRoutine(), 7);
-
-    setInterval(function() {if (Math.random() <= 0.8 && particleArray.length < 100) {particleArray.push({x:randrange(0,window.innerWidth),y:window.innerHeight,bias:randrange(-1,1),size:randrange(2,8),power:randrange(3,10)});}},20);
-
-
+    //skip particle spawning- a fix to counter V8 flooding the page with particles if focus is returned 
+    setInterval(function() {if (Math.random() <= 0.8 && particleArray.length < 100) {particleArray.push({x:randrange(0,window.innerWidth),y:window.innerHeight,bias:randrange(-1,1),size:randrange(2,8),power:randrange(3,10)});}},10);
     window.requestAnimationFrame(advanceFrame);
-
 }
 
 
+//recursive main loop for frame compositing
+
+//targeted effect: vague resemblance to the "rising ashes of a fire"
+//this is relatively easy to implement due to the nature of burning ashes being lifted by heat- dependent on its own size
+//hence the rate of ascension is just a function of vertical velocity to particle "draw size"    
+
 function advanceFrame(){
+    //update position array
+    onmousemove = function(m){Cursor.xpos = m.clientX; Cursor.ypos = m.clientY;}
 
     let canvasitem = document.querySelector("canvas");
 
@@ -30,7 +46,10 @@ function advanceFrame(){
     canvasElement.width = canvasitem.offsetWidth;
     canvasElement.height = canvasitem.offsetHeight;
 
+    //constants for draw
     canvasContext.fillStyle = "white";
+    canvasContext.strokeStyle = "white";
+    canvasContext.lineWidth = 1;
 
     //iterate through every single thing
     for(var i=0; i < particleArray.length; i++){
@@ -39,7 +58,8 @@ function advanceFrame(){
         //manipulating "float" speed
         particleArray[i].y += particleArray[i].size*-0.3;
 
-        //start draw routine
+
+        //"ash particle" draw routine
         canvasContext.beginPath();
         canvasContext.rect(particleArray[i].x, particleArray[i].y, particleArray[i].size, particleArray[i].size);
 
@@ -49,14 +69,29 @@ function advanceFrame(){
         if (particleArray[i].size < 0){particleArray.splice(i,1);}
         //randomly apply an increasing bias
         if (Math.random() <= 0.1) {particleArray[i].bias -= randrange(-1,1);}
-        
-        //draw routine
         canvasContext.fill();
-        canvasContext.stroke();
+
+        //experimental proximity draw
+        if(nodeDistancetoMouse(particleArray[i].x, particleArray[i].y) > nodeActivationDistance){continue;} 
+        else {
+            canvasContext.strokeStyle = "rgba(255, 255, 255," + opacityScale(particleArray[i].size) + ")";
+            //start draw routine for "node paths"
+            canvasContext.beginPath();
+            canvasContext.moveTo(Cursor.xpos-offsetX, Cursor.ypos+offsetY);
+            canvasContext.lineTo(particleArray[i].x, particleArray[i].y);
+            canvasContext.stroke();
+        }
+
     }
-    //advance the frame after iter
+
+    canvasContext.strokeStyle = "white";
+    //draw routine for cursor
+    canvasContext.beginPath();
+    canvasContext.arc(Cursor.xpos-offsetX, Cursor.ypos+offsetY, cursorRadius, 0, 2*Math.PI);
+    canvasContext.stroke();
+
+    //frame is finally advanced when all DRAW procedures go through
     window.requestAnimationFrame(advanceFrame);
 }
-
 
 console.log("success!");
