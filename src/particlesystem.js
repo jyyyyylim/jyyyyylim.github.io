@@ -16,8 +16,9 @@ const nodeActivationDistance= 300;
 
 //equations for the simulation
 function opacityScale(s) {return 0.7-(1/s)}
-function nodeDistancetoMouse(x, y) {return Math.abs(Math.sqrt(((x-Cursor.xpos)**2)+((y-Cursor.ypos)**2)))}
+function nodeDistancetoMouse(x, y) {return Math.abs(Math.sqrt(((x-Cursor.xpos)**2)+((y-Cursor.ypos)**2)));}
 function randrange(m, n){return Math.random()*(n - m) + m;}
+function biasRelativetoCursor(xpos, ypos) {return Cursor.xpos-xpos;}
 
 
 function initializeCanvas(){
@@ -53,27 +54,41 @@ function advanceFrame(){
 
     //iterate through every single thing
     for(var i=0; i < particleArray.length; i++){
+
+
         //"weighing" the bias function because even a random float between 1 and -1 is too much
         particleArray[i].x += particleArray[i].bias/6;
         //manipulating "float" speed
-        particleArray[i].y += particleArray[i].size*-0.3;
+        //particleArray[i].y += particleArray[i].size*-0.7;
 
 
-        //"ash particle" draw routine
+        //>"ash particle" draw routine
         canvasContext.beginPath();
         canvasContext.rect(particleArray[i].x, particleArray[i].y, particleArray[i].size, particleArray[i].size);
 
         //simulate "decay"
-        particleArray[i].size -= 0.02;
+        particleArray[i].size -= 0.025;
         //cull particles with downward velocity
         if (particleArray[i].size < 0){particleArray.splice(i,1);}
         //randomly apply an increasing bias
-        if (Math.random() <= 0.1) {particleArray[i].bias -= randrange(-1,1);}
+        //if (Math.random() <= 0.1) {particleArray[i].bias -= randrange(-1,1);}
+
         canvasContext.fill();
 
-        //experimental proximity draw
-        if(nodeDistancetoMouse(particleArray[i].x, particleArray[i].y) > nodeActivationDistance){continue;} 
-        else {
+        //>experimental proximity draw
+        if (nodeDistancetoMouse(particleArray[i].x, particleArray[i].y) > nodeActivationDistance) {
+            if (Math.random() <= 0.1) {particleArray[i].bias -= randrange(-1,1);}
+            particleArray[i].y += particleArray[i].size*-0.8;
+
+        } else {
+            particleArray[i].bias -= biasRelativetoCursor(particleArray[i].x, particleArray[i].y)/800;
+
+            if (Cursor.ypos > particleArray[i].y){
+                particleArray[i].y += particleArray[i].size*-0.9;
+            } else {
+                particleArray[i].y += particleArray[i].size*-0.7;
+            }
+
             canvasContext.strokeStyle = "rgba(255, 255, 255," + opacityScale(particleArray[i].size) + ")";
             //start draw routine for "node paths"
             canvasContext.beginPath();
@@ -82,10 +97,11 @@ function advanceFrame(){
             canvasContext.stroke();
         }
 
+
     }
 
     canvasContext.strokeStyle = "white";
-    //draw routine for cursor
+    //>draw routine for cursor
     canvasContext.beginPath();
     canvasContext.arc(Cursor.xpos-offsetX, Cursor.ypos+offsetY, cursorRadius, 0, 2*Math.PI);
     canvasContext.stroke();
