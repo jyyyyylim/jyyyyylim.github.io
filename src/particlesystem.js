@@ -157,7 +157,7 @@ function risingAshes(){
 function mousetests(){
 
     setInterval(function() {
-        if (Math.random() <= 0.8 && particleArray.length < maxParticles*2) {
+        if (Math.random() <= 0.8 && particleArray.length < maxParticles*1.6) {
             particleArray.push({
                 x:randrange(0,window.innerWidth),
                 y:randrange(0,window.innerHeight),
@@ -201,8 +201,8 @@ function mousetests(){
         //calculate cursor repulsive force
         var distBuffer = nodeDistancetoMouse(particleArray[i].x, particleArray[i].y);
         if (distBuffer < nodeActivationDistance) {
-            particleArray[i].xvel -= xvelRelativetoCursor(particleArray[i].x)/50;
-            particleArray[i].yvel -= yvelRelativetoCursor(particleArray[i].y)/50;
+            particleArray[i].xvel -= xvelRelativetoCursor(particleArray[i].x)/70;
+            particleArray[i].yvel -= yvelRelativetoCursor(particleArray[i].y)/70;
         }
         
         //draw routine
