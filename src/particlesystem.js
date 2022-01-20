@@ -212,7 +212,7 @@ function mousetests(){
         canvasContext.beginPath(); 
         canvasContext.arc(Cursor.xpos - offsetX, Cursor.ypos + offsetY, nodeActivationDistance, 0, 2*Math.PI);
         canvasContext.stroke();
-        canvasContext.fillText("s: " + Math.floor(particleArray[i].size) + " | v: " + Math.floor(hypotenuse(particleArray[i].xvel, particleArray[i].yvel)), particleArray[i].x+10, particleArray[i].y+10);
+        //canvasContext.fillText("s: " + Math.floor(particleArray[i].size) + " | v: " + Math.floor(hypotenuse(particleArray[i].xvel, particleArray[i].yvel)), particleArray[i].x+10, particleArray[i].y+10);
 
     }    
     window.requestAnimationFrame(mousetests);
