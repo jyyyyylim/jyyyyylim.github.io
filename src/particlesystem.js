@@ -22,6 +22,7 @@ const nodeActivationDistance= (window.innerWidth*window.innerHeight)**0.385;
 
 
 const bounceCoeff = 1.03;
+const deviationThreshold = 0.1;
 
 
 
@@ -157,12 +158,12 @@ function risingAshes(){
 function mousetests(){
 
     setInterval(function() {
-        if (Math.random() <= 0.8 && particleArray.length < maxParticles*1.6) {
+        if (Math.random() <= 0.8 && particleArray.length < maxParticles*1.5) {
             particleArray.push({
                 x:randrange(0,window.innerWidth),
                 y:randrange(0,window.innerHeight),
-                xvel:randrange(-5,5),
-                yvel:randrange(-5,5),
+                xvel:0,
+                yvel:0,
                 size:randrange(3,7)
             });}},1);
 
@@ -187,22 +188,24 @@ function mousetests(){
         if (particleArray[i].y < 0 || particleArray[i].y > window.innerHeight) {particleArray[i].yvel = bitwiseFlip(particleArray[i].yvel*bounceCoeff);}
         
         //handle movement
-        particleArray[i].x += particleArray[i].xvel/particleArray[i].size;
-        particleArray[i].y += particleArray[i].yvel/particleArray[i].size;
+        if (particleArray[i].xvel != 0) {particleArray[i].x += particleArray[i].xvel/particleArray[i].size;}
+        if (particleArray[i].yvel != 0) {particleArray[i].y += particleArray[i].yvel/particleArray[i].size;}
 
         
-        //decay..?
+        //velocity decay boilerplate
         if (particleArray[i].xvel < 0) {particleArray[i].xvel += 0.4;}
         else if (particleArray[i].xvel > 0) {particleArray[i].xvel -= 0.4;}
+        if (Math.abs(particleArray[i].xvel) < deviationThreshold) {particleArray[i].xvel = 0;}
+
         if (particleArray[i].yvel < 0) {particleArray[i].yvel += 0.4;}
         else if (particleArray[i].yvel > 0) {particleArray[i].yvel -= 0.4;}
-        
+        if (Math.abs(particleArray[i].yvel) < deviationThreshold) {particleArray[i].yvel = 0;}
 
         //calculate cursor repulsive force
         var distBuffer = nodeDistancetoMouse(particleArray[i].x, particleArray[i].y);
         if (distBuffer < nodeActivationDistance) {
-            particleArray[i].xvel -= xvelRelativetoCursor(particleArray[i].x)/70;
-            particleArray[i].yvel -= yvelRelativetoCursor(particleArray[i].y)/70;
+            particleArray[i].xvel -= xvelRelativetoCursor(particleArray[i].x)/40;
+            particleArray[i].yvel -= yvelRelativetoCursor(particleArray[i].y)/40;
         }
         
         //draw routine
@@ -213,7 +216,6 @@ function mousetests(){
         canvasContext.arc(Cursor.xpos - offsetX, Cursor.ypos + offsetY, nodeActivationDistance, 0, 2*Math.PI);
         canvasContext.stroke();
         //canvasContext.fillText("s: " + Math.floor(particleArray[i].size) + " | v: " + Math.floor(hypotenuse(particleArray[i].xvel, particleArray[i].yvel)), particleArray[i].x+10, particleArray[i].y+10);
-
     }    
     window.requestAnimationFrame(mousetests);
 }
@@ -356,6 +358,4 @@ function smokeCell(){
     window.requestAnimationFrame(smokeCell);
 
 }
-
-
 console.log("success!");
