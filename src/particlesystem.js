@@ -18,7 +18,7 @@ var Cursor = [];
 const cursorRadius = 10;
 const offsetX = Math.sqrt(cursorRadius);
 const offsetY = Math.sqrt(cursorRadius);
-const nodeActivationDistance= 300;
+const nodeActivationDistance= window.innerWidth*window.innerHeight/10000;
 
 
 const bounceCoeff = 1.03;
