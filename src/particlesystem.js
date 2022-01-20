@@ -47,19 +47,13 @@ function hypotenuse(a, b) {return Math.sqrt((a**2)+(b**2))}
 function initializeCanvas(){
     canvasElement = document.getElementById("simulation")
     canvasContext = canvasElement.getContext("2d");
-
-
-
     window.requestAnimationFrame(mousetests);
 }
 
 
-
-
 //recursive main loop for frame compositing
 function risingAshes(){
-
-        //skip particle spawning- a fix to counter V8 flooding the page with particles if focus is returned 
+    //skip particle spawning- a fix to counter V8 flooding the page with particles if focus is returned 
     //setInterval(function() {if (Math.random() <= 0.8 && particleArray.length < 100) {particleArray.push({x:randrange(0,window.innerWidth),y:window.innerHeight,xvel:randrange(-1,1),size:randrange(2,8),power:randrange(3,10)});}},10);
     //alter: use x and y-components instead of xvel
     setInterval(function() {
@@ -212,9 +206,9 @@ function mousetests(){
         canvasContext.beginPath();
         canvasContext.rect(particleArray[i].x, particleArray[i].y, particleArray[i].size, particleArray[i].size);
         canvasContext.fill();
-        canvasContext.beginPath(); 
-        canvasContext.arc(Cursor.xpos - offsetX, Cursor.ypos + offsetY, nodeActivationDistance, 0, 2*Math.PI);
-        canvasContext.stroke();
+        //canvasContext.beginPath(); 
+        //canvasContext.arc(Cursor.xpos - offsetX, Cursor.ypos + offsetY, nodeActivationDistance, 0, 2*Math.PI);
+        //canvasContext.stroke();
         //canvasContext.fillText("s: " + Math.floor(particleArray[i].size) + " | v: " + Math.floor(hypotenuse(particleArray[i].xvel, particleArray[i].yvel)), particleArray[i].x+10, particleArray[i].y+10);
     }    
     window.requestAnimationFrame(mousetests);
