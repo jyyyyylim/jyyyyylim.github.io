@@ -257,3 +257,58 @@ span {
 kbd {
     font-size: 0.62rem;
 }
+
+/*==============================polcomp=================================*/
+
+.-polcomp{
+    height: 46rem;
+    width: auto;
+    display: grid;
+    position: relative;
+    grid-template-columns: 50rem 27rem;
+}
+
+.plot{
+    margin: 1rem;
+    width: 40rem;
+    height: 40rem;
+    border: 2px dotted white;
+}
+
+.toolbar{
+    max-height: 100%;
+    display: grid;
+    margin: 1rem;
+    padding: 1rem;
+    border-left: 1px solid white;
+    position: relative;
+    grid-template-rows: 40rem 1rem;
+}
+
+.options{
+
+
+}
+
+.entries{
+    max-height: inherit;
+
+    overflow: auto;
+}
+
+
+.plotpoint{
+    position: relative;
+    margin: 1rem;
+    padding: 0.7rem;
+    background-color: rgb(40, 42, 54);
+}
+
+.plotpoint > input[type=text] {
+    margin: 0.6rem;
+}
+
+.delete{
+    position: absolute;
+    top: 0; right: 0.7rem;
+}
