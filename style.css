@@ -33,6 +33,9 @@ canvas.pageend{margin-left: -5rem; margin-right: -5rem; width: 99vw; height: 100
 body::-webkit-scrollbar{width: 0.25rem;}
 body::-webkit-scrollbar-track{background: rgb(46, 50, 58);}
 body::-webkit-scrollbar-thumb{background: rgb(62, 66, 73);}
+body::-khtml-scrollbar{width: 0.25rem;}
+body::-khtml-scrollbar-track{background: rgb(46, 50, 58);}
+body::-khtml-scrollbar-thumb{background: rgb(62, 66, 73);}
 
 .pagediv-item{
     position: relative;
@@ -198,13 +201,12 @@ span {
 .panel{
     width: 85vw;
     height: 75%;
-    padding: 0.7rem;
     border-radius: 2px;
     box-shadow: 0 0 2pt 0.3pt rgba(0, 0, 0, 0.2);
     background-color: rgb(23, 23, 23);
     outline: 2px solid rgb(25, 25, 25);
-
 }
+
 
 .preview-ctnr{
     float: right;
@@ -245,18 +247,11 @@ span {
     opacity: .4;
 }
 
-.slider:hover{
-    opacity: 1;
-}
+.slider:hover{opacity: 1;}
 
-.slider-ctnr{
-    padding: 0.7rem;
-    width: 100%;
-}
+.slider-ctnr{padding: 0.7rem; width: 100%;}
 
-kbd {
-    font-size: 0.62rem;
-}
+kbd {font-size: 0.62rem;}
 
 /*==============================polcomp=================================*/
 
@@ -264,15 +259,38 @@ kbd {
     height: 46rem;
     width: auto;
     display: grid;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
     position: relative;
-    grid-template-columns: 50rem 27rem;
+    grid-template-columns: 2fr 1fr;
+}
+
+-center{
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 .plot{
     margin: 1rem;
-    width: 40rem;
-    height: 40rem;
+    width: 45rem;
+    height: 45rem;
     border: 2px dotted white;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+/*clearfix hack*/
+.plot:after{
+    content:"";
+    clear: both;
+    display: table;
 }
 
 .toolbar{
@@ -292,16 +310,41 @@ kbd {
 
 .entries{
     max-height: inherit;
+    overflow-x: hidden;
+    overflow-y: auto;
 
-    overflow: auto;
+
 }
 
 
 .plotpoint{
+    opacity: 100%;
     position: relative;
     margin: 1rem;
     padding: 0.7rem;
+    max-width: 100%;
     background-color: rgb(40, 42, 54);
+    transform: translate(0, 0);
+
+    animation: expand-in 0.7s ease-in;
+    transition: 0.5s;
+}
+
+
+@keyframes expand-in{
+    from {
+        opacity: 0%;
+        transform: translate(3rem, 0);
+    }}
+
+.plotpoint:hover{
+    transform: matrix(1.02, 0, 0, 1.02, 5, 0);
+    box-shadow: 0 0 3pt 2pt rgba(255, 255, 255, 20%);
+}
+
+.plotpoint-remove{
+    transform: matrix(0.63, 0, 0, 0.63, -2rem, 0);
+    opacity: 0%;
 }
 
 .plotpoint > input[type=text] {
@@ -309,6 +352,15 @@ kbd {
 }
 
 .delete{
+    transition: 0.4s;
     position: absolute;
     top: 0; right: 0.7rem;
 }
+
+.delete:hover{
+    color: rgba(255, 20, 20, 70%);
+
+}
+
+
+
