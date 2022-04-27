@@ -357,10 +357,19 @@ kbd {font-size: 0.62rem;}
     top: 0; right: 0.7rem;
 }
 
-.delete:hover{
-    color: rgba(255, 20, 20, 70%);
+.delete:hover{color: rgba(255, 20, 20, 70%);}
 
+
+slider.polslider{height: 0.02rem;}
+
+.options > span{transition: 0.5s;}
+
+.options > span[class="reset"]:hover{color: rgba(235, 20, 20, 80%);}
+
+.options > span:not([class="reset"]):hover{    
+    animation-name: glow;
+    animation-duration: 3s;
+    animation-iteration-count: infinite;
 }
-
 
 
